@@ -1,0 +1,16 @@
+server:
+   port: 9296
+
+spring:
+   application:
+      name: CONFIG-SERVER
+   profiles:
+      active: composite
+   cloud:
+      config:
+         server:
+            composite:
+               - type: git
+                 uri: https://github.com/rahulz-wasnik/configurations
+            bootstrap: true
+            clone-on-start: true
