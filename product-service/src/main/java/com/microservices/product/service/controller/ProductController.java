@@ -1,17 +1,18 @@
 package com.microservices.product.service.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="/inventory")
-public class InventoryController {
+@RequestMapping(path="/products")
+public class ProductController {
 
 	@PostMapping(path = "/check-quantity/{productId}")
-	public boolean checkQuantity(@PathVariable Integer productId, @RequestParam Integer quantity) {
-		return true;
+	public ResponseEntity<Boolean> checkQuantity(@PathVariable Integer productId) {
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
 	}
 }

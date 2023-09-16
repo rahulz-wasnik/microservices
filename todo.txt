@@ -1,0 +1,7 @@
+
+- how to implement circuit breaker at api gateway level
+- take config server to detail
+- move code to core project
+- okta security
+Figure out multi module project
+Feign clients making names of the services as constants in properties file

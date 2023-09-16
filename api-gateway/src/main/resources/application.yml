@@ -24,4 +24,4 @@ spring:
                uri: lb://PRODUCT-SERVICE
                predicates:
                   - Path=/inventory/**
-            
+

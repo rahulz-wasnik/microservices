@@ -22,6 +22,39 @@ spring:
    jpa:
       show-sql: true
       hibernate:
-         generate-ddl: true
          ddl-auto: create
          format_sql: true
+
+management:
+   health:
+      circuitbreakers:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+            include: '*'
+   endpoint:
+      health:
+         show-details: always
+
+#resilience4j:
+#   circuitbreaker:
+#      configs:
+#         default:
+#            registerHealthIndicator: true
+#            slidingWindowSize: 10
+#            slidingWindowType: COUNT_BASED
+#            minimumNumberOfCalls: 5
+#            permittedNumberOfCallsInHalfOpenState: 2
+#            automaticTransitionFromOpenToHalfOpenEnabled: true
+#            waitDurationInOpenState: 5s
+#            failureRateThreshold: 50
+#      instances:
+#         placeOrders:
+#            baseConfig: default
+#   retry:
+#      instances:
+#         retryPlaceOrders:
+#            registerHealthIndicator: true
+#            maxRetryAttempts: 5
+#            waitDuration: 3s
