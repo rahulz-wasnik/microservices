@@ -1,5 +1,6 @@
 package com.microservices.order.service.controller;
 
+import com.microservices.order.service.dto.OrderDto;
 import com.microservices.order.service.entity.Order;
 import com.microservices.order.service.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,8 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 	@PostMapping
-	public ResponseEntity<Order> placeOrder(@RequestBody Order order) {
-		Order savedOrder = orderService.placeOrder(order);
+	public ResponseEntity<Order> placeOrder(@RequestBody OrderDto orderDto) {
+		Order savedOrder = orderService.placeOrder(orderDto);
 		return new ResponseEntity<>(savedOrder, HttpStatus.OK);
 	}
 }

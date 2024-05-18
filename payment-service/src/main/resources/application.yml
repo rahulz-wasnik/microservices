@@ -7,13 +7,13 @@ spring:
    config:
       import: configserver:http://localhost:9296
    datasource:
-      url: jdbc:mysql://localhost:3306/learn-microservices?createDatabaseIfNotExist=true
+      url: jdbc:mysql://localhost:3306/quick-shop
       username: root
-      password: root
+      password: admin
       driver-class-name: com.mysql.cj.jdbc.Driver
    jpa:
       show-sql: true
       hibernate:
          generate-ddl: true
-         ddl-auto: create
+         ddl-auto: none
          format_sql: true

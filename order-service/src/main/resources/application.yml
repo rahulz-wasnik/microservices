@@ -13,17 +13,31 @@ spring:
    application:
       name: ORDER-SERVICE
    config:
-      import: configserver:http://localhost:9296
+      import:
+         - configserver:http://localhost:9296
+#         - vault://
    datasource:
-      url: jdbc:mysql://localhost:3306/learn-microservices?createDatabaseIfNotExist=true
+      url: jdbc:mysql://localhost:3306/quick-shop?createDatabaseIfNotExist=true
+#      username: ${database.username}
+#      password: ${database.password}
       username: root
-      password: root
+      password: admin
       driver-class-name: com.mysql.cj.jdbc.Driver
    jpa:
       show-sql: true
       hibernate:
          ddl-auto: create
          format_sql: true
+   cloud:
+      vault:
+         kv:
+            enabled: true
+         authentication: TOKEN
+         token: hvs.Zq0U621uXTOmVw3plmsZ8LyX
+         scheme: http
+         host: 127.0.0.1
+         port: 8200
+
 
 management:
    health:
@@ -36,6 +50,9 @@ management:
    endpoint:
       health:
          show-details: always
+   tracing:
+      sampling:
+         probability: 1.0
 
 #resilience4j:
 #   circuitbreaker:
@@ -58,3 +75,5 @@ management:
 #            registerHealthIndicator: true
 #            maxRetryAttempts: 5
 #            waitDuration: 3s
+
+

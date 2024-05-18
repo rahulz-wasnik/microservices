@@ -14,6 +14,8 @@ spring:
                uri: lb://ORDER-SERVICE
                predicates:
                   - Path=/orders/**
+               filters:
+                  - AuthenticationFilter
             - 
                id: PAYMENT-SERVICE
                uri: lb://PAYMENT-SERVICE
@@ -24,4 +26,10 @@ spring:
                uri: lb://PRODUCT-SERVICE
                predicates:
                   - Path=/inventory/**
-
+               filters:
+                  - AuthenticationFilter
+            -
+               id: SECURITY-SERVICE
+               uri: lb://SECURITY-SERVICE
+               predicates:
+                  - Path=/auth/**
