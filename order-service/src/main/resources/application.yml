@@ -18,10 +18,8 @@ spring:
 #         - vault://
    datasource:
       url: jdbc:mysql://localhost:3306/quick-shop?createDatabaseIfNotExist=true
-#      username: ${database.username}
-#      password: ${database.password}
-      username: root
-      password: admin
+      username: ${database.username}
+      password: ${database.password}
       driver-class-name: com.mysql.cj.jdbc.Driver
    jpa:
       show-sql: true
@@ -33,7 +31,7 @@ spring:
          kv:
             enabled: true
          authentication: TOKEN
-         token: hvs.Zq0U621uXTOmVw3plmsZ8LyX
+         token: ${vault.token}
          scheme: http
          host: 127.0.0.1
          port: 8200
