@@ -3,13 +3,8 @@ package com.microservices.product.service.controller;
 import com.microservices.product.service.dto.ProductDto;
 import com.microservices.product.service.entity.Product;
 import com.microservices.product.service.service.ProductService;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="/products")
+@RequestMapping(path="/api/v1/products")
 public class ProductController {
 
 	@Autowired
@@ -64,15 +59,6 @@ public class ProductController {
 	public ResponseEntity<Void> deleteProduct(@PathVariable("id") long id) {
 		productService.delete(id);
 		return ResponseEntity.accepted().build();
-	}
-
-	@GetMapping("/name")
-	public ResponseEntity<ProductDto> getProductByName(@RequestParam String name) {
-		ProductDto productDto = new ProductDto();
-		productDto.setId(1L);
-		productDto.setName(name);
-		productDto.setQuantity(1000);
-		return ResponseEntity.ok(productDto);
 	}
 
 }

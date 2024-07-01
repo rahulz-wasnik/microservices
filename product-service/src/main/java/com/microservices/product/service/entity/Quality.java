@@ -1,21 +1,17 @@
 package com.microservices.product.service.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Added here to only understand hibernate N+1 problem and the way to resolve it.
  */
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity
-@Table(name = "QUALITY")
+//@Data
+//@Builder
+//@AllArgsConstructor
+//@NoArgsConstructor
+//@Entity
+//@Table(name = "QUALITY")
 public class Quality {
 
     @Id

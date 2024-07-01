@@ -1,5 +1,5 @@
 server:
-  port: 9080
+  port: 8081
 
 spring:
   application:
@@ -7,13 +7,16 @@ spring:
   config:
     import: configserver:http://localhost:9296
   datasource:
+    hikari:
+      maximum-pool-size: 20
     url: jdbc:mysql://localhost:3306/quick-shop
     username: root
     password: admin
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    open-in-view: false
     show-sql: true
     hibernate:
       generate-ddl: true
       ddl-auto: update
-      format_sql: true
+      format_sql: false
