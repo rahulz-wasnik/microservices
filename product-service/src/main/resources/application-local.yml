@@ -46,3 +46,15 @@ logging:
       org.springframework.jdbc.datasource.DataSourceUtils: ERROR
       org.springframework.transaction.interceptor.TransactionInterceptor: ERROR
       org.springframework.cache: TRACE
+      org.togglz: DEBUG
+
+togglz:
+   enabled: true
+   features:
+      PRODUCT_ACER_LAUNCH:
+         enabled: false
+   #  feature-enums: com.microservices.product.service.togglz.ServiceFeature
+   cache:
+      enabled: false
+      time-to-live: 60
+      time-unit: seconds

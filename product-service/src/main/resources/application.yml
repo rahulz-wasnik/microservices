@@ -2,7 +2,14 @@ qs:
   web:
     security:
       method-security:
-        enabled: true
+        enabled: false
       config:
         interceptor:
-          enabled: true
+          enabled: false
+  core:
+    togglz:
+      feature-togglz-service-uri: http://localhost:8888//api/feature-togglz-service/togglz
+      enable-in-memory-togglz-as-fallback: false
+      enable-custom-activation-strategy: false
+
+

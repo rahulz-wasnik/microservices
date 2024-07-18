@@ -1,1 +1,6 @@
+com\microservices\core\togglz\AppTogglzAutoConfiguration.class
 com\microservices\core\vo\Payment.class
+com\microservices\core\togglz\AppTogglzAutoConfiguration$StateRepositoryConfiguration.class
+com\microservices\core\togglz\AppTogglzProperties.class
+com\microservices\core\togglz\AppTogglzProperties$Auth.class
+com\microservices\core\togglz\AppTogglzStateRepository.class

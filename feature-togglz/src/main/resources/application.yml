@@ -1,0 +1,28 @@
+server:
+  port: 8888
+  servlet:
+    context-path: "/api/feature-togglz-service"
+spring:
+  application:
+    name: FEATURE-TOGGLZ-SERVICE
+  datasource:
+    hikari:
+    url: jdbc:mysql://localhost:3306/qs-feature-togglz?createDatabaseIfNotExist=true
+    username: root
+    password: admin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      generate-ddl: true
+      ddl-auto: create
+      format_sql: true
+
+togglz:
+  feature-enum:
+    - com.microservices.config.FeatureFlags
+  console:
+    enabled: true
+    path: /togglz-console
+    secured: false

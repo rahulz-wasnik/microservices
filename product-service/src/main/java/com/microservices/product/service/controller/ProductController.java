@@ -3,6 +3,8 @@ package com.microservices.product.service.controller;
 import com.microservices.product.service.dto.ProductDto;
 import com.microservices.product.service.entity.Product;
 import com.microservices.product.service.service.ProductService;
+import com.microservices.product.service.togglz.ServiceFeature;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping(path="/api/v1/products")
 public class ProductController {
@@ -32,7 +35,12 @@ public class ProductController {
 	@GetMapping
 //	@RateLimiter(name = "getProducts", fallbackMethod = "getProductsFallBack")
 	public ResponseEntity<List<Product>> getProducts() {
-		return ResponseEntity.ok(productService.getAllProducts());
+		log.info("About to fetch products");
+		if (ServiceFeature.PRODUCT_ACER_LAUNCH.isActive()) {
+			return ResponseEntity.ok(List.of());
+		} else {
+			return  ResponseEntity.ok(productService.getAllProducts());
+		}
 	}
 
 	public ResponseEntity<List<Product>> getProductsFallBack(Exception exception) {
