@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-service-deployment
+spec:
+  selector:
+    matchLabels:
+      app: customer-service-app #deployment matched to the pod using this label, which is same as template > metadata > labels > app - value
+  template:
+    metadata:
+      labels:
+        app: customer-service-app #pod label
+    spec:
+      containers:
+      - name: customer-service-app
+        image: teebone1985/customer-service:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_HOST
+          value: "host.docker.internal"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-service-svc
+spec:
+  selector:
+    app: customer-service-app #used to match the service to a pod, this value should match template > metadata > labels > app value
+  ports:
+  - port: 8080
+    targetPort: 8080
+    protocol: TCP
+  type: LoadBalancer
+
